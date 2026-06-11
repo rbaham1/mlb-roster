@@ -20,6 +20,7 @@ class RosterProvider extends ChangeNotifier {
     } catch (error) {
       errorMessage = "Failed to load teams";
     }
+    // notifyListeners();
     isLoading = false;
     notifyListeners();
   }
@@ -36,6 +37,7 @@ class RosterProvider extends ChangeNotifier {
     } catch (error) {
       errorMessage = "Failed to load roster";
     }
+    // notifyListeners();
     isLoading = false;
     notifyListeners();
   }

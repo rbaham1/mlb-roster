@@ -41,7 +41,7 @@ class _TeamScreenState extends State<TeamScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(16),
+          padding: EdgeInsets.all(24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -53,7 +53,7 @@ class _TeamScreenState extends State<TeamScreen> {
                 )
               ),
 
-              SizedBox(height: 24,),
+              SizedBox(height: 20,),
 
               Expanded(
                 child: ListView.builder(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mlb_roster/models/roster_model.dart';
 import 'package:mlb_roster/providers/roster_provider.dart';
+import 'package:mlb_roster/screens/player_screen.dart';
+import 'package:mlb_roster/widgets/back_arrow.dart';
 import 'package:provider/provider.dart';
 
 class RosterScreen extends StatefulWidget {
@@ -61,29 +63,12 @@ class _RosterScreenState extends State<RosterScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(16),
+          padding: EdgeInsets.all(24),
           child: Column(
             children: [
-              Row(
-                children: [
-                  IconButton(
-                    onPressed: () => Navigator.pop(context),
-                    icon: Icon(Icons.arrow_back)
-                  ),
-                  Expanded(
-                    child: Text(
-                      'Roster',
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold
-                      ),
-                    )
-                  ),
-                  SizedBox(width: 48,)
-                ],
-              ),
+              BackArrow(displayText: "Roster",),
 
-              SizedBox(height: 16,),
+              SizedBox(height: 20,),
 
               // Display circular loading indicator while roster is being fetched
               provider.isLoading
@@ -102,12 +87,12 @@ class _RosterScreenState extends State<RosterScreen> {
                   
                       return InkWell(
                         onTap: () {
-                        //   Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //       builder: (context) => ()
-                        //     )
-                        //   );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => PlayerScreen(player: player)
+                            )
+                          );
                         },
                         child: Card(
                           clipBehavior: Clip.antiAlias,
@@ -149,7 +134,7 @@ class _RosterScreenState extends State<RosterScreen> {
                                               ),
 
                                               Text(
-                                                "${player.position} | #${player.number}",
+                                                "${player.positionAbbrev} | #${player.number}",
                                                 style: TextStyle(
                                                   color: Colors.grey[600]
                                                 ),
